@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iCareShop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+  <header class="bg-white shadow p-4 flex items-center">
+    <img src="assets/logo.jpg" alt="iCareShop Logo" class="w-[50px] h-[50px] rounded-full object-cover mr-4">
+    <h1 class="text-2xl font-bold text-[#ff5718]">iCareShop</h1>
+  </header>
+
+  <div class="overflow-x-auto whitespace-nowrap px-4 py-2 bg-white shadow sticky top-0 z-10">
+    <div class="inline-flex space-x-2">
+      <button onclick="scrollToCategory('HomeAppliance', this)" class="category-tab px-4 py-2 text-sm rounded-full border border-[#ff5718] text-[#ff5718] hover:bg-[#ffaa7f] transition whitespace-nowrap">Home Appliance</button>
+      <button onclick="scrollToCategory('Furniture', this)" class="category-tab px-4 py-2 text-sm rounded-full border border-[#ff5718] text-[#ff5718] hover:bg-[#ffaa7f] transition whitespace-nowrap">Furniture</button>
+      <button onclick="scrollToCategory('MobilePhone', this)" class="category-tab px-4 py-2 text-sm rounded-full border border-[#ff5718] text-[#ff5718] hover:bg-[#ffaa7f] transition whitespace-nowrap">Mobile Phone</button>
+      <button onclick="scrollToCategory('Kitchenware', this)" class="category-tab px-4 py-2 text-sm rounded-full border border-[#ff5718] text-[#ff5718] hover:bg-[#ffaa7f] transition whitespace-nowrap">Kitchenware</button>
+    </div>
+  </div>
+
+  <div class="px-4 py-4">
+    <input id="searchInput" oninput="renderAllProducts()" type="text" placeholder="Search products..." class="w-full mb-4 px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-[#ff5718]">
+    <div id="allProducts"></div>
+  </div>
+
+  <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-6 rounded-xl shadow-lg max-w-sm w-full relative">
+      <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">✖</button>
+      <img id="modalImg" src="" class="w-full rounded mb-4" />
+      <p id="modalId" class="text-sm text-gray-500"></p>
+      <h2 id="modalName" class="text-lg font-semibold mb-2"></h2>
+      <p id="modalPrice" class="text-orange-600 font-bold"></p>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
