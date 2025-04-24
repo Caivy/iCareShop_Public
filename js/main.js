@@ -44,7 +44,7 @@ async function renderAllProducts(searchText = '', filterCategory = '') {
               <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 ${matches.map(p => `
                   <div onclick='showProductModal(${JSON.stringify(p)})' class="cursor-pointer bg-white p-4 rounded-xl shadow">
-                    <img src="https://github.com/Caivy/iCareShop-Backend/blob/main${p.img}" class="rounded mb-2" />
+                    <img src="https://github.com/Caivy/iCareShop-Backend/blob/main${p.img}?raw=true" class="rounded mb-2" />
                     <p class="text-sm text-gray-500">ID: ${p.id}</p>
                     <h3 class="font-semibold">${p.name}</h3>
                     <p class="text-yellow-600 font-bold">$${p.priceUsd.toFixed(2)} &nbsp; KHR ${p.priceKhr.toLocaleString()}</p>
