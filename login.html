@@ -15,6 +15,27 @@
     <p id="errorMsg" class="text-red-500 mt-2 hidden">Login failed. Try again.</p>
   </form>
 
-  <script src="js/login.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const form = e.target;
+      const res = await fetch('https://icareshop-backend.onrender.com/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: form.username.value,
+          password: form.password.value
+        })
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem('admin_token', data.token);
+        window.location.href = 'admin.html';
+      } else {
+        document.getElementById('errorMsg').classList.remove('hidden');
+      }
+    });
+  </script>
 </body>
 </html>
