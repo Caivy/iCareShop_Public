@@ -1,5 +1,5 @@
 async function fetchProducts() {
-    const res = await fetch('http://localhost:3000/api/products');
+    const res = await fetch('https://icareshop-backend.onrender.com/api/products');
     return await res.json();
   }
   
@@ -32,7 +32,7 @@ async function fetchProducts() {
                   ${filtered.map(p => `
                     <div onclick='showProductModal(${JSON.stringify(p)})'
                          class="cursor-pointer bg-white p-4 rounded-xl shadow">
-                      <img src="http://localhost:3000${p.img}" class="rounded mb-2" />
+                      <img src="https://icareshop-backend.onrender.com${p.img}" class="rounded mb-2" />
                       <p class="text-sm text-gray-500">ID: ${p.id}</p>
                       <h3 class="font-semibold">${p.name}</h3>
                       <p class="text-yellow-600 font-bold">
@@ -60,7 +60,7 @@ async function fetchProducts() {
   }
   
   function showProductModal(product) {
-    document.getElementById('modalImg').src = `http://localhost:3000${product.img}`;
+    document.getElementById('modalImg').src = `https://icareshop-backend.onrender.com${product.img}`;
     document.getElementById('modalPrice').textContent =
       `$${product.priceUsd.toFixed(2)}   KHR ${product.priceKhr.toLocaleString()}`;
     document.getElementById('modalId').textContent = `ID: ${product.id}`;

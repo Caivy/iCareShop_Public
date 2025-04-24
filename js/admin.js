@@ -1,5 +1,5 @@
 async function fetchProducts() {
-    const res = await fetch('http://localhost:3000/api/products');
+    const res = await fetch('https://icareshop-backend.onrender.com/api/products');
     return await res.json();
   }
   
@@ -7,7 +7,7 @@ async function fetchProducts() {
   const list = document.getElementById('productList');
   list.innerHTML = products.map(p => `
     <div class="bg-white p-4 rounded shadow">
-      <img src="http://localhost:3000${p.img}" class="rounded mb-2" />
+      <img src="https://icareshop-backend.onrender.com${p.img}" class="rounded mb-2" />
       <p class="text-sm text-gray-500">ID: ${p.id || 'N/A'}</p>
       <h3 class="font-semibold">${p.name || 'Unnamed Product'}</h3>
       <p class="text-yellow-600 font-bold">
@@ -27,7 +27,7 @@ async function fetchProducts() {
     .addEventListener('submit', async e => {
       e.preventDefault();
       const formData = new FormData(e.target);
-      const res = await fetch('http://localhost:3000/api/admin/upload', {
+      const res = await fetch('https://icareshop-backend.onrender.com/api/admin/upload', {
         method: 'POST',
         body: formData
       });
