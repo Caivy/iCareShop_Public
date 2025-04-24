@@ -19,7 +19,7 @@
     document.getElementById('loginForm').addEventListener('submit', async e => {
       e.preventDefault();
       const form = e.target;
-      const res = await fetch('https://icareshop-backend.onrender.com/api/auth/login', {
+      const res = await fetch('https://icareshop-backend.onrender.com/api/auth/create-admin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
