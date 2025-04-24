@@ -17,7 +17,25 @@ async function fetchProducts() {
   `).join('');
 }
 
-  
+function getTokenHeader() {
+  const token = localStorage.getItem('admin_token');
+  return { Authorization: `Bearer ${token}` };
+}
+
+// Update product upload fetch call
+// Inside document.getElementById('productForm').addEventListener...
+const res = await fetch('https://icareshop-backend.onrender.com/api/admin/upload', {
+  method: 'POST',
+  headers: getTokenHeader(),
+  body: formData
+});
+
+// File: public/admin.html (add at top of <script> block)
+if (!localStorage.getItem('admin_token')) {
+  window.location.href = 'login.html';
+}
+
+
   async function loadProducts() {
     const products = await fetchProducts();
     renderProducts(products);

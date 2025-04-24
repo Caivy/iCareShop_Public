@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex justify-center items-center h-screen bg-gray-100">
+  <form id="loginForm" class="bg-white p-6 rounded shadow w-80">
+    <h1 class="text-xl font-bold text-orange-600 mb-4">Admin Login</h1>
+    <input name="username" type="text" placeholder="Username" required class="w-full mb-3 p-2 border rounded">
+    <input name="password" type="password" placeholder="Password" required class="w-full mb-3 p-2 border rounded">
+    <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white w-full p-2 rounded">Login</button>
+    <p id="errorMsg" class="text-red-500 mt-2 hidden">Login failed. Try again.</p>
+  </form>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const form = e.target;
+      const res = await fetch('https://icareshop-backend.onrender.com/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: form.username.value,
+          password: form.password.value
+        })
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem('admin_token', data.token);
+        window.location.href = 'admin.html';
+      } else {
+        document.getElementById('errorMsg').classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
