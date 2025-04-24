@@ -103,10 +103,12 @@ document.getElementById('categoryForm').addEventListener('submit', async (e) => 
     })
   });
   if (res.ok) {
+    //work
     form.reset();
     await loadCategories();
     await populateCategoryDropdowns(await fetchCategories());
   } else {
+    //doesn't work
     alert('Category creation failed');
   }
 });
