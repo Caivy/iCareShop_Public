@@ -53,7 +53,7 @@ async function loadProducts() {
   const list = document.getElementById('productList');
   list.innerHTML = products.map(p => `
     <div class="bg-white p-4 rounded shadow">
-      <img src="https://icareshop-backend.onrender.com/api/admin/upload${p.img}" class="w-full h-40 object-cover mb-2 rounded" />
+      <img src="https://github.com/Caivy/iCareShop-Backend/blob/main/uploads/${p.img}" class="w-full h-40 object-cover mb-2 rounded" />
       <p class="text-sm text-gray-500">ID: ${p.id}</p>
       <h3 class="font-semibold">${p.name}</h3>
       <p class="text-yellow-600 font-bold">$${p.priceUsd.toFixed(2)} | KHR ${p.priceKhr.toLocaleString()}</p>
