@@ -1,28 +1,3 @@
-// File: public/js/admin.js (full with fixed showSection logic)
-function getTokenHeader() {
-  const token = localStorage.getItem('admin_token');
-  return { Authorization: `Bearer ${token}` };
-}
-
-function logout() {
-  localStorage.removeItem('admin_token');
-  window.location.href = 'login.html';
-}
-
-function isTokenExpired(token) {
-  try {
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    return payload.exp * 1000 < Date.now();
-  } catch (e) {
-    return true;
-  }
-}
-
-const token = localStorage.getItem('admin_token');
-if (!token || isTokenExpired(token)) {
-  logout();
-}
-
 function showSection(sectionId) {
   const sections = document.querySelectorAll('main section');
   sections.forEach(section => {
@@ -78,7 +53,7 @@ async function loadProducts() {
   const list = document.getElementById('productList');
   list.innerHTML = products.map(p => `
     <div class="bg-white p-4 rounded shadow">
-      <img src="https://icareshop-backend.onrender.com${p.img}" class="w-full h-40 object-cover mb-2 rounded" />
+      <img src="https://icareshop-backend.onrender.com/api/admin/upload${p.img}" class="w-full h-40 object-cover mb-2 rounded" />
       <p class="text-sm text-gray-500">ID: ${p.id}</p>
       <h3 class="font-semibold">${p.name}</h3>
       <p class="text-yellow-600 font-bold">$${p.priceUsd.toFixed(2)} | KHR ${p.priceKhr.toLocaleString()}</p>

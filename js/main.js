@@ -44,7 +44,7 @@ async function renderAllProducts(searchText = '', filterCategory = '') {
               <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 ${matches.map(p => `
                   <div onclick='showProductModal(${JSON.stringify(p)})' class="cursor-pointer bg-white p-4 rounded-xl shadow">
-                    <img src="${p.img}" class="rounded mb-2" />
+                    <img src="https://icareshop-backend.onrender.com/api/admin/upload${p.img}" class="rounded mb-2" />
                     <p class="text-sm text-gray-500">ID: ${p.id}</p>
                     <h3 class="font-semibold">${p.name}</h3>
                     <p class="text-yellow-600 font-bold">$${p.priceUsd.toFixed(2)} &nbsp; KHR ${p.priceKhr.toLocaleString()}</p>
@@ -60,7 +60,7 @@ async function renderAllProducts(searchText = '', filterCategory = '') {
 }
 
 function showProductModal(product) {
-  document.getElementById('modalImg').src = product.img;
+  document.getElementById('modalImg').src = "https://icareshop-backend.onrender.com/api/admin/upload${p.img}";
   document.getElementById('modalPrice').textContent = `$${product.priceUsd.toFixed(2)}   KHR ${product.priceKhr.toLocaleString()}`;
   document.getElementById('modalId').textContent = `ID: ${product.id}`;
   document.getElementById('modalName').textContent = product.name;
