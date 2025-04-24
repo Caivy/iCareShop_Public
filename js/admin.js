@@ -66,7 +66,6 @@ document.getElementById('productForm').addEventListener('submit', async (e) => {
   const formData = new FormData(e.target);
   const res = await fetch('https://icareshop-backend.onrender.com/api/admin/upload', {
     method: 'POST',
-    headers: getTokenHeader(),
     body: formData
   });
   if (res.ok) {
@@ -97,7 +96,7 @@ document.getElementById('categoryForm').addEventListener('submit', async (e) => 
   const form = e.target;
   const res = await fetch('https://icareshop-backend.onrender.com/api/categories', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', ...getTokenHeader() },
+    headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify({
       name: form.name.value,
       subcategories: form.subcategories.value.split(',').map(s => s.trim())
@@ -117,7 +116,6 @@ async function deleteCategory(id) {
   if (!confirmed) return;
   const res = await fetch(`https://icareshop-backend.onrender.com/api/categories/${id}`, {
     method: 'DELETE',
-    headers: getTokenHeader()
   });
   if (res.ok) {
     await loadCategories();
