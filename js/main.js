@@ -60,7 +60,7 @@ async function renderAllProducts(searchText = '', filterCategory = '') {
 }
 
 function showProductModal(product) {
-  document.getElementById('modalImg').src = p.img;
+  document.getElementById('modalImg').src = product.img;
   document.getElementById('modalPrice').textContent = `$${product.priceUsd.toFixed(2)}   KHR ${product.priceKhr.toLocaleString()}`;
   document.getElementById('modalId').textContent = `ID: ${product.id}`;
   document.getElementById('modalName').textContent = product.name;
