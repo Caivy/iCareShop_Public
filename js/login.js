@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const { username, password } = form;
       try {
-        const res = await fetch('http://localhost:3000/api/auth/login', {
+        const res = await fetch('https://icareshop-backend.onrender.com/api/auth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -22,4 +22,4 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error(err);
       }
     });
-});
+  });
